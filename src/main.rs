@@ -49,6 +49,8 @@ impl Arguments {
     }
 }
 
+
+
 fn scan(tx: Sender<u16>, start_port: u16, addr: IpAddr, num_threads: u16) {
     let mut num_port: u16 = start_port + 1;
     loop {
@@ -70,6 +72,13 @@ fn scan(tx: Sender<u16>, start_port: u16, addr: IpAddr, num_threads: u16) {
 
 }
 
+/*
+The main function is the entry point of the program. It begins by collecting the command-line arguments into a vector of strings (args).
+It also creates a variable program to store the name of the program (the first argument). Then, it attempts to parse the command-line arguments 
+using the Arguments::new function.
+If successful, it stores the parsed arguments in the arguments variable. If an error occurs, it handles the error and exits the program.
+*/
+
 fn main() {
     //we take all the arguments passed and we create a collection with ip address, the flag and the number of threads
     let args: Vec<String> = env::args().collect();
@@ -86,7 +95,7 @@ fn main() {
     );
 
     let num_threads = arguments.threads;
-    let(tx, rx) = channel();
+    let(tx, rx) = channel(); //for communication between threads
     let addr = arguments.ipaddr;
 
     for i in 0..num_threads {

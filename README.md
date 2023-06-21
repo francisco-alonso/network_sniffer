@@ -6,8 +6,21 @@ Please type
 ```
 cargo run -j 1000 192.168.1.1
 ```
+
 if you want to check open ports at adress `192.168.1.1`
 
+By default the number of threads is `4`. In case you don't want to specify a specific number of thread just run
+
+```
+cargo run 192.168.1.1
+
+```
 ![Sniffer at 192.168.1.1](example.png)
+
+If you need help, please run:
+
+```
+cargo run -h
+```
 
 
